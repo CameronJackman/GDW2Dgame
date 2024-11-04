@@ -8,10 +8,14 @@ public class PlayerScript : MonoBehaviour
     public float jumpPower;
     public GameObject player;
     public float speed = 0f;
+    public float Damage;
+
+    private EnemyScript Enemy;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private GameObject whip;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Movement
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() || Input.GetKeyDown(KeyCode.W) && IsGrounded())
@@ -31,6 +36,13 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && IsGrounded() || Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+
+        //Attack
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            whip.SetActive(true);
+
         }
     }
 
