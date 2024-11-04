@@ -32,7 +32,7 @@ public class EnemyScript : MonoBehaviour
             Playerheath.TakeDamage(damage);
         }
 
-        if(collision.gameObject.tag == "whip")
+        if(collision.gameObject.tag == "Weapon")
         {
             Enemyhealth.TakeDamage(damageTaken);
         }

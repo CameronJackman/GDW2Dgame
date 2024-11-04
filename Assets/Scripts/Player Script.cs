@@ -8,9 +8,6 @@ public class PlayerScript : MonoBehaviour
     public float jumpPower;
     public GameObject player;
     public float speed = 0f;
-    public float Damage;
-
-    private EnemyScript Enemy;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
