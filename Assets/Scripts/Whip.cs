@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Whip : MonoBehaviour
 {
     [SerializeField] private EnemyScript Enemy;
     [SerializeField] private PlayerScript Player;
@@ -20,9 +20,6 @@ public class Weapon : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Enemy.damageTaken = Damage;
-        }
+        Enemy.damageTaken = Damage;
     }
 }
