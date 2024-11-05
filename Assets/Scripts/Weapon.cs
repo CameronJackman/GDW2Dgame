@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    private EnemyScript Enemy;
+    [SerializeField] private EnemyScript Enemy;
+    [SerializeField] private PlayerScript Player;
     public float Damage;
     // Start is called before the first frame update
     void Start()
@@ -17,10 +18,9 @@ public class Weapon : MonoBehaviour
     {
         
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             Enemy.damageTaken = Damage;
         }

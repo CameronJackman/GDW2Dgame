@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private GameObject whip;
+    public bool ePressed;
 
     // Start is called before the first frame update
     void Start()
@@ -35,11 +35,13 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
-        //Attack
         if (Input.GetKeyDown(KeyCode.E))
         {
-            whip.SetActive(true);
-
+            ePressed = true;
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            ePressed = false;
         }
     }
 
