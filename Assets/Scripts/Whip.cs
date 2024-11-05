@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Whip : MonoBehaviour
 {
-    [SerializeField] private EnemyScript Enemy;
-    [SerializeField] private PlayerScript Player;
-    public float Damage;
+
+
+    [SerializeField] private float WhipDamage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,9 @@ public class Whip : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy.damageTaken = Damage;
+        if(collision.gameObject.tag == "Enemy")
+        {
+            collision.GetComponent<Health>().TakeDamage(WhipDamage);
+        }
     }
 }
