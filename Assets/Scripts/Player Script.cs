@@ -13,6 +13,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     public bool ePressed;
+    private bool isFacingRight = true;
+
+    [SerializeField] WeaponActivate whipActivate;
 
     // Start is called before the first frame update
     void Start()
@@ -34,24 +37,42 @@ public class PlayerScript : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
+        flip();
 
-        if (Input.GetKeyDown(KeyCode.E))
+        //Draw weapon when e pressed
+        if (Input.GetKeyDown(KeyCode.E) && whipActivate.ready == true)
         {
             ePressed = true;
+            whipActivate.wAtimeElapsed = 0;
         }
         if (Input.GetKeyUp(KeyCode.E))
         {
             ePressed = false;
         }
+
+
     }
 
     private void FixedUpdate()
     {
+        //player speed
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
     private bool IsGrounded()
     {
+        //check if player is on the ground or not d
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private void flip()
+    {
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localscale =transform.localScale;
+            localscale.x *= -1f;
+            transform.localScale = localscale;
+        }
     }
 }

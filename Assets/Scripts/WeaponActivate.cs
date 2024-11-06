@@ -5,9 +5,10 @@ using UnityEngine;
 public class WeaponActivate : MonoBehaviour
 {
     [SerializeField] private PlayerScript Player;
-    public float heldOutOnAttackTime;
+    [SerializeField] private float coolDown;
     [SerializeField] private GameObject weapon;
-    private float timeElapsed;
+    public float wAtimeElapsed;
+    public bool ready;
 
     // Start is called before the first frame update
     void Start()
@@ -22,17 +23,16 @@ public class WeaponActivate : MonoBehaviour
         if (Player.ePressed == true)
         {
             weapon.SetActive(true);
-            Debug.Log("E Presed");
         }
-        if (weapon.activeInHierarchy)
+
+        wAtimeElapsed += Time.deltaTime;
+        if (wAtimeElapsed >= coolDown)
         {
-            Debug.Log("Active");
-            timeElapsed += Time.deltaTime;
-            if (timeElapsed >= heldOutOnAttackTime)
-            {
-                weapon.SetActive(false);
-                timeElapsed = 0f;
-            }
+            ready = true;
+        }
+        else
+        {
+            ready = false;
         }
     }
 
