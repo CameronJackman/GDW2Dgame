@@ -9,28 +9,21 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Health Enemyhealth;
     [SerializeField] private float damage;
     [SerializeField] private GameObject Enemy;
-    private Transform maxL, maxR;
-    
-    
+    [SerializeField] private float speed=0.5f;
     public float damageTaken;
 
-    private void moveLeft()
-    {
-        maxL = Enemy.transform.Find("MaxDisMoveL");
-    }
+    
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-
+       
         //kill enemy when health is 0 or less
         if (Enemyhealth.health <= 0)
         {
@@ -54,13 +47,7 @@ public class EnemyScript : MonoBehaviour
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Whip")
-        {
-            Debug.Log("test");
-        }
-    }
+
 
 
 
