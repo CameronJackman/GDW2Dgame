@@ -1071,6 +1071,10 @@ PrefabInstance:
       propertyPath: Playerheath
       value: 
       objectReference: {fileID: 3700126060073662194}
+    - target: {fileID: 5027938945408073195, guid: 8af990058de975a45ad11b42b4481cb4, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8358938188007085555, guid: 8af990058de975a45ad11b42b4481cb4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

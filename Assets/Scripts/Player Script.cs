@@ -96,7 +96,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             playerRb.AddForce(-transform.forward * pushingForce);
-            Debug.Log("Herrow World");
+            
         }
     }
 }
