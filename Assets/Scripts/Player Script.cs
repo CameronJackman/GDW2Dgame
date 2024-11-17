@@ -14,8 +14,12 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     public bool ePressed;
     private bool isFacingRight = true;
+    private float pushingForce = 100f;
+    
 
     [SerializeField] WeaponActivate whipActivate;
+
+    [SerializeField] private Animator Animator;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +43,18 @@ public class PlayerScript : MonoBehaviour
         }
         flip();
 
+        if (horizontal == 0f)
+        {
+            Animator.SetBool("isWalking", false);
+        }
+
+        if (horizontal != 0f)
+        {
+            Animator.SetBool("isWalking", true);
+        }
+
         //Draw weapon when e pressed
-        if (Input.GetKeyDown(KeyCode.E) && whipActivate.ready == true)
+        if (Input.GetKey(KeyCode.E) && whipActivate.ready == true)
         {
             ePressed = true;
             whipActivate.wAtimeElapsed = 0;
@@ -73,6 +87,16 @@ public class PlayerScript : MonoBehaviour
             Vector3 localscale =transform.localScale;
             localscale.x *= -1f;
             transform.localScale = localscale;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Rigidbody2D playerRb = GetComponent<Rigidbody2D>();
+        if (collision.gameObject.tag == "Enemy")
+        {
+            playerRb.AddForce(-transform.forward * pushingForce);
+            Debug.Log("Herrow World");
         }
     }
 }

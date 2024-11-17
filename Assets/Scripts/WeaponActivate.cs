@@ -20,7 +20,7 @@ public class WeaponActivate : MonoBehaviour
     void Update()
     {
         //Attack
-        if (Player.ePressed == true)
+        if (Player.ePressed == true && ready == true)
         {
             weapon.SetActive(true);
         }
