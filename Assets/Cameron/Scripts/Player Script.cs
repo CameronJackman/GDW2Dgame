@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private GameObject footstepsAudio;
     public bool ePressed;
     private bool isFacingRight = true;
     private float pushingForce = 100f;
@@ -30,6 +31,8 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
         //Movement
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -46,11 +49,13 @@ public class PlayerScript : MonoBehaviour
         if (horizontal == 0f)
         {
             Animator.SetBool("isWalking", false);
+            footstepsAudio.SetActive(false);
         }
 
         if (horizontal != 0f)
         {
             Animator.SetBool("isWalking", true);
+            footstepsAudio.SetActive(true);
         }
 
         //Draw weapon when e pressed
