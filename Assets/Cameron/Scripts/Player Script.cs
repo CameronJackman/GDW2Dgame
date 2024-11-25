@@ -63,10 +63,12 @@ public class PlayerScript : MonoBehaviour
         {
             ePressed = true;
             whipActivate.wAtimeElapsed = 0;
+            Animator.SetBool("isAttacking", true);
         }
         if (Input.GetKeyUp(KeyCode.E))
         {
             ePressed = false;
+            Animator.SetBool("isAttacking", false);
         }
 
 
