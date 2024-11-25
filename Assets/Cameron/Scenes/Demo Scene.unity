@@ -899,7 +899,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+  m_Color: {r: 0.5320754, g: 0.5320754, b: 0.5320754, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2830,6 +2830,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3836518983857637770, guid: 692159192c6342a488a74c22ea20d38b, type: 3}
+      propertyPath: m_Intensity
+      value: 2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836518983857637770, guid: 692159192c6342a488a74c22ea20d38b, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.595
+      objectReference: {fileID: 0}
     - target: {fileID: 4123658088545229443, guid: 692159192c6342a488a74c22ea20d38b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.3
