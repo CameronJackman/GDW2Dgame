@@ -20,10 +20,10 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         // follow
-        Vector3 newpos = new Vector3(player.position.x, player.position.y, -10f);
+        Vector3 newpos = new Vector3(player.position.x, player.position.y, -10);
 
 
-        Vector3 targetPosition = player.position + newpos;
+        Vector3 targetPosition = new Vector3(player.position.x, player.position.y, -10);
 
         float camHeight = cam.orthographicSize * 2;
         float camWidth = camHeight * cam.aspect;
