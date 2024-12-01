@@ -11,6 +11,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private GameObject Enemy;
     [SerializeField] private float speed=0.5f;
     public float damageTaken;
+    [SerializeField] private AudioSource damageAudio;
+    
 
     
 
@@ -36,12 +38,14 @@ public class EnemyScript : MonoBehaviour
         //when colliding with player deal damage
         if(collision.gameObject.tag == "Player")
         {
+            
             Playerheath.TakeDamage(damage);
         }
 
         //when colliding with the whip it takes damage 
         if(collision.gameObject.tag == "Whip")
         {
+
             Enemyhealth.TakeDamage(damageTaken);
         }
 

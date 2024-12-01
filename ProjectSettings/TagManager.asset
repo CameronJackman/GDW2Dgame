@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Whip
+  - LootBag
+  - DeathBarrier
+  - Win
+  - SlowEnemy
   layers:
   - Default
   - TransparentFX

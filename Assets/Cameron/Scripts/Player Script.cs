@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -12,20 +14,31 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private GameObject footstepsAudio;
+    [SerializeField] private AudioSource footstepsAudio;
     public bool ePressed;
     private bool isFacingRight = true;
     private float pushingForce = 100f;
-    
+    [SerializeField] private Menus menus;
+
 
     [SerializeField] WeaponActivate whipActivate;
 
     [SerializeField] private Animator Animator;
 
+    [SerializeField] private TMP_Text bagText;
+
+    [SerializeField] private AudioSource coinCollect, whipSound, damageAudio;
+
+    private float bagCount, totalBags;
+    [SerializeField] GameObject LootBags, winScreen;
+
+    [SerializeField] private TMP_Text bagsCollect;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        totalBags = LootBags.transform.childCount; 
     }
 
     // Update is called once per frame
@@ -49,13 +62,13 @@ public class PlayerScript : MonoBehaviour
         if (horizontal == 0f)
         {
             Animator.SetBool("isWalking", false);
-            footstepsAudio.SetActive(false);
+            footstepsAudio.Play();
         }
 
         if (horizontal != 0f)
         {
             Animator.SetBool("isWalking", true);
-            footstepsAudio.SetActive(true);
+            
         }
 
         //Draw weapon when e pressed
@@ -64,6 +77,8 @@ public class PlayerScript : MonoBehaviour
             ePressed = true;
             whipActivate.wAtimeElapsed = 0;
             Animator.SetBool("isAttacking", true);
+            whipSound.Play();
+
         }
         if (Input.GetKeyUp(KeyCode.E))
         {
@@ -102,8 +117,35 @@ public class PlayerScript : MonoBehaviour
         Rigidbody2D playerRb = GetComponent<Rigidbody2D>();
         if (collision.gameObject.tag == "Enemy")
         {
-            playerRb.AddForce(-transform.forward * pushingForce);
+            damageAudio.Play();
+            playerRb.AddForce(-transform.right * pushingForce);
             
         }
+
+        if (collision.gameObject.tag == "DeathBarrier")
+        {
+            SceneManager.LoadScene(2);
+        }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("LootBag"))
+        {
+            bagCount++; coinCollect.Play();
+            bagText.text = "Bags Collected: "+bagCount;
+            collision.gameObject.SetActive(false);
+        }
+
+        if (collision.gameObject.CompareTag("Win"))
+        {
+            winScreen.SetActive(true);
+            Time.timeScale = 0;
+            bagsCollect.text = "You Collected:" + bagCount + "/" + totalBags + " Loot Bags";
+        }
+    }
+
+    
+
+
 }

@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Demo Scene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/PlayGameHere(Title Screen).unity
+    guid: f62d620191884ad43b4c5ede2d4277b1
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: 2b2996e56b26abd49bbe4f73a0a2ed57
+  - enabled: 1
+    path: Assets/Scenes/DeathScreen.unity
+    guid: d232ebe9b7a07384c84f7b72ff49b0a8
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: e49139ac614f19540bdc870978977d3f
   m_configObjects: {}
