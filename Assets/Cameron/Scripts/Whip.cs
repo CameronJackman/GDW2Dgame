@@ -42,5 +42,11 @@ public class Whip : MonoBehaviour
         {
             collision.GetComponent<Health>().TakeDamage(WhipDamage);
         }
+
+        if (collision.gameObject.tag == "Wall")
+        {
+            gameObject.transform.position = whipStart.transform.position;
+            this.gameObject.SetActive(false);
+        }
     }
 }

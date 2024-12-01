@@ -10,6 +10,7 @@ TagManager:
   - DeathBarrier
   - Win
   - SlowEnemy
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -126,6 +126,8 @@ public class PlayerScript : MonoBehaviour
         {
             SceneManager.LoadScene(2);
         }
+        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -133,7 +135,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("LootBag"))
         {
             bagCount++; coinCollect.Play();
-            bagText.text = "Bags Collected: "+bagCount;
+            bagText.text = "Bags Collected: " + bagCount;
             collision.gameObject.SetActive(false);
         }
 
