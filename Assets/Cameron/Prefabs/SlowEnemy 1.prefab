@@ -324,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   enemy: {fileID: 8267496971555119619}
-  speed: 0.04
+  speed: 2.25
   animator: {fileID: 2019180526510064647}
   Scream: {fileID: 0}
   isFastEnemy: 0

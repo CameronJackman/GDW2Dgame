@@ -51,7 +51,7 @@ public class Menus : MonoBehaviour
     {
         buttonPress.Play();
         Application.Quit();
-        EditorApplication.isPlaying = false;
+     //   EditorApplication.isPlaying = false;
     }
 
     public void restartGame()

@@ -22,10 +22,11 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         
+
         if (move == true)
         {
             animator.SetBool("isWalking", true);
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, player.transform.position, speed/10 ) * (Time.timeScale/Time.timeScale);
+            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, player.transform.position, speed * Time.deltaTime ) * (Time.timeScale/Time.timeScale);
         }
         if (move == false)
         {

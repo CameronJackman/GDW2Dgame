@@ -20,8 +20,12 @@ public class EasterEgg : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        backAudio.SetActive(false); footSteps.SetActive(false);
-        kermit.Play();
-        Time.timeScale = 0.25f;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            backAudio.SetActive(false); footSteps.SetActive(false);
+            kermit.Play();
+            Time.timeScale = 0.25f;
+        }
+        
     }
 }
